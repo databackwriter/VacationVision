@@ -57,39 +57,49 @@ username = "thedatabloke"
 tweets = gettimeline(username)
 
 
-for status in tweets:
-    print(status)
-    
-    
-    
-#i = 1
 #for status in tweets:
-#    if hashtag in status.text:
-#        createdstr = str(status.created_at)[:10]
-#        picturefile = getimagepath(status)
-#        if len(picturefile) > 0: # build our model
-##            df2 = pd.DataFrame([[createdstr, picturefile, status.text]], columns=collist)
-#            picturefileout = holdingdir.format(createdstr, "jpg")
-#            rowdict={}
-#            rowdict["Created"] = createdstr
-#            rowdict["PictureFileTwitter"] = picturefile
-#            rowdict["PictureFileLocal"] = createdstr + ".jpg"
-#            rowdict["Tweet"] = status.text
-#            xldf = xldf.append(rowdict, ignore_index=True)
-#            downloadfromurl(picturefile,picturefileout)
-#
-#    i += 1
-#
-#print(i)
-#
+#    print(status)
+
+
+
+hashtag = "#dailyperson"
+holdingdir="/Users/petermoore/Documents/GitHub/DailyFrenzy/images/{}.{}"
+xlfile = holdingdir.format("ListOfImages", "xlsx")
+
+import pandas as pd
+xldf = pd.DataFrame()
+ 
+    
+    
+i = 1
+for status in tweets:
+    if hashtag in status.text:
+        createdstr = str(status.created_at)[:10]
+        picturefile = getimagepath(status)
+        if len(picturefile) > 0: # build our model
+#            df2 = pd.DataFrame([[createdstr, picturefile, status.text]], columns=collist)
+            picturefileout = holdingdir.format(createdstr, "jpg")
+            rowdict={}
+            rowdict["Created"] = createdstr
+            rowdict["PictureFileTwitter"] = picturefile
+            rowdict["PictureFileLocal"] = createdstr + ".jpg"
+            rowdict["Tweet"] = status.text
+            xldf = xldf.append(rowdict, ignore_index=True)
+            downloadfromurl(picturefile,picturefileout)
+
+    i += 1
+
+print(i)
+
 #xldf.head()
-#
-#
-## Create a Pandas Excel writer using XlsxWriter as the engine.
-#writer = pd.ExcelWriter(xlfile)
-#
-## Convert the dataframe to an XlsxWriter Excel object.
-#xldf.to_excel(writer, sheet_name='Sheet1')
-#
-## Close the Pandas Excel writer and output the Excel file.
-#writer.save()
+
+import pandas as pd
+
+# Create a Pandas Excel writer using XlsxWriter as the engine.
+writer = pd.ExcelWriter(xlfile)
+
+# Convert the dataframe to an XlsxWriter Excel object.
+xldf.to_excel(writer, sheet_name='Sheet1')
+
+# Close the Pandas Excel writer and output the Excel file.
+writer.save()
