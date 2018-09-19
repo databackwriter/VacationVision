@@ -1,0 +1,127 @@
+---
+title: "MSc Data Science - Interim Report"
+author: "Peter Moore"
+date: "`r Sys.Date()`"
+output:
+  pdf_document: default
+  word_document: default
+course: AC53011
+studentid: '170000983'
+bibliography: skeleton.bib
+link-citations: yes
+---
+
+```{r setup, include=FALSE}
+library(kableExtra) # use to make tables pretty
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Project Details
+
+Title: Building a holiday recommendation engine based on Twitter timelines
+
+Course: AC53011
+
+Studentid: '170000983'
+
+## Project Summary
+
+The aim of this project is to recommend exotic holiday destinations for people. “Exotic” in this case meaning places they may never have thought of going but that would suit them. These would be recommended via an analysis of their own holiday snaps per their Twitter feed and a comparison with their peers.
+
+## Project Specifications
+
+The recommendation engine will follow the following steps and considerations.
+
+### Data understanding 
+
+**Online part**: reviewing “obvious” hashtags such as #vacation to identify holiday snaps; comparing and contrasting these with, for example, #work.  Using this to build a library of terms to create training set.
+**Data part**: regency, frequency, intensity analysis (RFI) of tweets versus holiday (do Tweets cluster around holidays); how does place name vary. What are the pitfalls, for example someone is away on business?
+
+### Data preparation 
+
+Technology selection: in the first instances, tweets will be downloaded using the Python^[https://www.python.org] Tweepy^[http://www.tweepy.org] package, data will be initially stored securely. Image detection will be performed using Tensorflow^[https://www.tensorflow.org].  Initial process will be on a MacBook using host CPU, with (probable) expansion to Google’s Cloud^[https://cloud.google.com/gpu/]  computing platform using NVIDIA GPU^[https://www.nvidia.com/en-us/data-center/tesla-k80/].
+Tweet collection: development of download script.
+Tweet image pseudonymisation: co-opting of technology to remove personally identifying information (PII)
+Tweet text pseudonymisation: removal of names and references.
+
+### Modelling
+
+The fundamental unit of data collection will be the JSON from a tweet^[https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/intro-to-tweet-json.html]. This includes information such as photographs, Hashtag and emoji. From these, the following models will need be created:
+
+#### Twitter downloader
+**Purpose**: to be able to get the dataset for the project.
+**Considerations**: inline processing, pseudonymisation.
+
+
+#### Object detection
+
+**Purpose**: For pseudonymisation of faces; facial sentiment (e.g. pouting); for detection of holiday effects (e.g. pints of beer)
+**Preliminary considerations**: sunsets, pints of beer, planes, smiles, oceans
+
+#### Sentiment analysis
+
+**Purpose**: The purpose is to recommend holidays that make people happy.  Sentiment analysis will be used to investigate what makes people happy
+**Preliminary considerations**: Hashtag, Emoji, Text,Place, RFI
+
+#### Recommendation engine
+
+##### Building
+
+**Purpose**: To assess the holiday effects, compare them to those of others and create recommendation via, for example, collaborative filtering methods
+**Preliminary considerations**: Flora, fauna, background, activities, timing
+
+##### The recommendation itself
+
+**Purpose**: To allow the user to interact with the product, for example, using R-shiny to create a navigable front-end, that allow, not only the real-time parsing of their Twitter feed but also the parametrisation of their suggestion via dimensions such as adventurousness and relaxation.
+
+### Evaluation	
+
+Iteration of above process to assess emergent problems. Also, the area where known problems are assessed, for example it is illegal under GDPR article  to parse sexuality or religious belief (say) and these are known constraints.
+
+###  Deployment
+
+Liaison with business to see how the app would be useful for business.
+Production of project poster.
+Curation of stand for project demonstration day in Dundee
+
+###  Dependencies
+
+Technology: CPU processing is available to the project but GPU processing on NVIDIA is not.  This makes NVIDIA a dependency, and/or, Google Cloud (who offer a rental version of this).  Twitter is vital to the project and as such is a primary dependency.
+
+## Literature Review
+
+The successful implementation of this project requires the use of object recognition as described by @lecun2015deep and that this be rapid (@krizhevsky2012imagenet). The photographic analysis will rest on a variety of pre-trained models, in particular, those in the the ImageNet dataset (@deng2009imagenet).
+
+A stretch goal of the project is to move beyond traditional object detection and into semantic scene classification, for example to detect a sunset.  This has been looked at by @shen2003multilabel but not form a deep learning perspective. A more recent edition Of his body of work comes from @chen2018encoder who look at cityscapes with Tensorflow.  
+
+Before a holiday is recommended it is necessary to ascertain whether or not a person is on holiday.  For example, does a photo containing a pint of beer imply a holiday; ditto a sunset. The interaction between photographs and tourism has been described by song2006tourism.From the metadata, the place of a tweet is sometimes known and this may imply away from home; modal location may be used to describe home but when does away from home constitute holiday? This is an interesting question that has been tangentially looked at by @toyama2003geographic.
+
+Finally, in order to recommend holidays to people, it is necessary to know what makes them happy. Whilst this can be achieved by sentiment analysis, some traditional methods for doing this have been found wanting due to sarcasm (see @gonzalez2011identifying). A potential way of avoiding this is via the use of emoji as studied by @taboada2011lexicon who show that emojis may be used to detect sarcasm.
+
+These documents form the starting point for the problem as understood.
+
+## Current progress
+
+An initial twitter downloader has been built using Tweepy with in Python. The JSON was interrogated. This acts as a successful proof of concept.
+
+The project is presently looking into the ImageNet database as an (at least partially) solved object detection problem. 
+
+Ethics forms have been submitted and have had preliminary approval from the project supervisor and are awaiting ethics committee approval.
+
+Establishment of a happiness/relaxation index and the recommendation engine itself are yet to be commenced.  
+
+
+## Future Project Timeline
+September: gathering and pseudonymisation of photographic data from Twitter, labelling of images, training of algorithm.
+October: data mining of photos, for example identification of holidays, clustering of data to produce recommendations (for example via association rules)
+November: definition and creation of product, for example, development of API
+December: testing and showcasing
+January: write-up and presentation
+
+## References
+
+
+
+
+
+
