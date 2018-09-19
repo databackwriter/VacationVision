@@ -22,7 +22,7 @@ def gettimeline(username,
                 include_rts=False,
                 exclude_replies=True):
     tweets = api.user_timeline(screen_name=username,
-                               count=20, include_rts=include_rts,
+                               count=200, include_rts=include_rts,
                                exclude_replies=exclude_replies)
 
     last_id = tweets[-1].id
