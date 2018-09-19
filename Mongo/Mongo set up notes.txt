@@ -1,0 +1,18 @@
+
+# pull mongon docker image  from here
+docker pull mongo
+
+# run docker with mapped port 5174 from here:
+docker run --name mscmongo --restart=always -d -p 5174:27017 mongo mongod --auth
+
+# enter docker like so:
+sudo docker exec -i -t mscmongo bash
+
+# then follow thse instructions: https://gist.github.com/davideicardi/f2094c4c3f3e00fbd490
+
+# get ip like this: 
+docker inspect 55af60b26b5a | grep '"IPAddress"' | head -n 1
+
+# see if it worked here (NB this worked for me but there is a pitfall and you may need to enter the ip): http://localhost:5174
+
+# you should see: It looks like you are trying to access MongoDB over HTTP on the native driver port.
