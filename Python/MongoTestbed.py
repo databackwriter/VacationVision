@@ -33,3 +33,6 @@ doc_id = coll.insert_one(doc).inserted_id # NB The _id of a document is an insta
 # query by ObjectId
 my_doc = coll.find_one({'_id' : doc_id})
 print(my_doc)
+
+
+
