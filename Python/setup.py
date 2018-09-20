@@ -13,11 +13,7 @@ PATH_AUTHYAML = "authorisations.yaml" #NB this file ignored from GitHub
 import os
 os.chdir(PATH_HOME)
 
-
-
-
-####### DATABASE #######
-
+#region DATABASE
 # create a function to read yaml file and get connection strings (0=SQL, 1=MONGO)
 def getDSNfromYAML(yamlfile, yamlindex):
     import yaml
@@ -34,12 +30,12 @@ def getDSNfromYAML(yamlfile, yamlindex):
     return dsn, alchemydsn, pdsn, puser, ppassword, pport, pdb, mongopath
 
 
-####### SQL #######
+#region SQL
 
 # connection strings
 pyodbcdsn, sqlalchemydsn, rawdsn, sqluser, sqlpassword, sqlport, sqldb, _ = getDSNfromYAML(PATH_CONNYAML, 0)
 
-# sqlalchemy session: use sqlalchemy to talk to sql server via the Base, engine and session objects created here 
+# sqlalchemy engine: use sqlalchemy to talk to sql server via the Base, engine and session objects created here 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
@@ -48,19 +44,19 @@ engine = create_engine(sqlalchemydsn)
 Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine.execution_options(isolation_level='READ COMMITTED'))
 session = DBSession()
-####### END SQL #######
+#endregion SQL
 
-####### Mongo #######
+#region MONGO
 _, _, _, mongouser, mongopassword, mongoport, mongodb, mongopath = getDSNfromYAML(PATH_CONNYAML, 1)
-# code partially inspired by https://marcobonzanini.com/2015/09/07/getting-started-with-mongodb-and-python/
+# mongo engine: code partially inspired by https://marcobonzanini.com/2015/09/07/getting-started-with-mongodb-and-python/
 from pymongo import MongoClient
 client = MongoClient(mongopath)
 mongoengine = client[mongodb]
-####### END MONGO #######
+#endregion MONGO
 
-####### END DATABASE #######
+#endregion DATABASE
 
-####### SOCIAL MEDIA #######
+#region SOCIALMEDIA
 # create a function to read yaml file and get authorisation strings (0=Twitter, 1=MONGO)
 def getAuthDSNfromYAML(yamlfile, 
                    yamlindex):
@@ -74,7 +70,7 @@ def getAuthDSNfromYAML(yamlfile,
         paccesssecret = doc[yamlindex]["accesssecret"]
     return pplatform, pconsumerkey, pconsumersecret, paccesstoken, paccesssecret
 
-####### TWITTER #######
+#region TWITTER
 # get twitter strings to set up connection
 _, twitterconsumerkey, twitterconsumersecret, twitteraccesstoken, twitteraccesssecret = getAuthDSNfromYAML(PATH_AUTHYAML, 0)
 import tweepy
@@ -82,45 +78,7 @@ from tweepy import OAuthHandler
 twitterauth = OAuthHandler(twitterconsumerkey, twitterconsumersecret)
 twitterauth.set_access_token(twitteraccesstoken, twitteraccesssecret)
 twitterapi = tweepy.API(twitterauth)
-
-# get a user's timeline from https://miguelmalvarez.com/2015/03/03/download-the-pictures-from-a-twitter-feed-using-python/
-def gettimeline(api,
-                username,
-                include_rts=False,
-                exclude_replies=True
-                ):
-    tweets = api.user_timeline(screen_name=username,
-                               count=200, include_rts=include_rts,
-                               exclude_replies=exclude_replies)
-
-    last_id = tweets[-1].id
-    while (True):
-        more_tweets = api.user_timeline(screen_name=username,
-                                    count=200,
-                                    include_rts=include_rts,
-                                    exclude_replies=exclude_replies,
-                                    max_id=last_id-1)
-        # There are no more tweets
-        if (len(more_tweets) == 0):
-              break
-        else:
-              last_id = more_tweets[-1].id-1
-              tweets = tweets + more_tweets
-
-    return tweets
-
-def process_or_store(tweet):
-    import json
-    print(json.dumps(tweet))
     
-#i = 0
-#tweets = gettimeline(twitterapi, "thedatabloke")
-#for tweet in tweets:
-#    process_or_store(tweet._json)
-#    i += 1
-#    if i>3:
-#        break
-    
-####### END TWITTER #######
+#endregion TWITTER
 
-####### END SOCIAL MEDIA #######
+#endregion SOCIALMEDIA

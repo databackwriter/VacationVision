@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 Created on Tue Sep 18 16:20:55 2018
-
+A collection of functions for querying Twitter
 @author: petermoore
 """
 

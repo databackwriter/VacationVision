@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 Created on Thu Sep 20 08:11:52 2018
-
+A collection of functions for querying the sql database
 @author: petermoore
 """
 
