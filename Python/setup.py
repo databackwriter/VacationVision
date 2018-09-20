@@ -36,12 +36,6 @@ def getDSNfromYAML(yamlfile, yamlindex):
 
 ####### SQL #######
 pyodbcdsn, sqlalchemydsn, rawdsn, sqluser, sqlpassword, sqlport, sqldb, _ = getDSNfromYAML(PATH_CONNYAML, 0)
-def sqldf(sql,con):
-    import pyodbc
-    import pandas as pd
-    conn = pyodbc.connect(con, autocommit=True)
-    df = pd.read_sql(sql,conn)
-    return df
 
 # use sqlalchemy to talk to sql server via the Base, engine and session objects created here 
 from sqlalchemy import create_engine
@@ -113,17 +107,17 @@ def gettimeline(api,
 
     return tweets
 
-import json
 def process_or_store(tweet):
+    import json
     print(json.dumps(tweet))
     
-i = 0
-tweets = gettimeline(twitterapi, "thedatabloke")
-for tweet in tweets:
-    process_or_store(tweet)
-    i += 1
-    if i>3:
-        break
+#i = 0
+#tweets = gettimeline(twitterapi, "thedatabloke")
+#for tweet in tweets:
+#    process_or_store(tweet._json)
+#    i += 1
+#    if i>3:
+#        break
     
 ####### END TWITTER #######
 
