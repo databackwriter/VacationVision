@@ -6,16 +6,15 @@ Created on Wed Sep 19 12:16:12 2018
 @author: petermoore
 """
 #from objectclasses import Version
-
+from setup import pyodbcdsn,session
 
 from SQLFunctionality import sqldf
-from setup import pyodbcdsn
+
 _dataframe = sqldf("SELECT db_name()", pyodbcdsn)
 
 from ObjectClasses import Version
-from setup import session
 ns=Version()
-ns.Version='Version'
+ns.Version='Version 3'
 _Version = ns.addappend(session)
 
 

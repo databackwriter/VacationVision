@@ -35,9 +35,11 @@ def getDSNfromYAML(yamlfile, yamlindex):
 
 
 ####### SQL #######
+
+# connection strings
 pyodbcdsn, sqlalchemydsn, rawdsn, sqluser, sqlpassword, sqlport, sqldb, _ = getDSNfromYAML(PATH_CONNYAML, 0)
 
-# use sqlalchemy to talk to sql server via the Base, engine and session objects created here 
+# sqlalchemy session: use sqlalchemy to talk to sql server via the Base, engine and session objects created here 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
@@ -60,7 +62,7 @@ mongoengine = client[mongodb]
 
 ####### SOCIAL MEDIA #######
 # create a function to read yaml file and get authorisation strings (0=Twitter, 1=MONGO)
-def getDSNfromYAML(yamlfile, 
+def getAuthDSNfromYAML(yamlfile, 
                    yamlindex):
     import yaml
     with open(yamlfile, 'r') as f:
@@ -74,7 +76,7 @@ def getDSNfromYAML(yamlfile,
 
 ####### TWITTER #######
 # get twitter strings to set up connection
-_, twitterconsumerkey, twitterconsumersecret, twitteraccesstoken, twitteraccesssecret = getDSNfromYAML(PATH_AUTHYAML, 0)
+_, twitterconsumerkey, twitterconsumersecret, twitteraccesstoken, twitteraccesssecret = getAuthDSNfromYAML(PATH_AUTHYAML, 0)
 import tweepy
 from tweepy import OAuthHandler
 twitterauth = OAuthHandler(twitterconsumerkey, twitterconsumersecret)
