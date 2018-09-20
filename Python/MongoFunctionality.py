@@ -8,12 +8,15 @@ A collection of functions for querying the mongo database
 from setup import mongoengine
 
 # code to append a json file "doc" to the mongo db as defined by mongoengine, to the collection as defined by mongocoll
+
+
 def mongoAppend(doc, mongoengine=mongoengine, mongocoll="Tweets"):
     # example usage:
     # from setup import mongoengine
     # mongoAppend(doc=somedict, mongoengine = mongoengine, mongocoll="NameOfCollection")
     coll = mongoengine[mongocoll]
-    return coll.insert_one(doc).inserted_id # NB The _id of a document is an instance of ObjectId, rather than a simple string
+    # NB The _id of a document is an instance of ObjectId, rather than a simple string
+    return coll.insert_one(doc).inserted_id
 
 
 def mongoAppendIfNotExists(doc, mongoengine=mongoengine, mongocoll="Tweets"):
@@ -21,6 +24,5 @@ def mongoAppendIfNotExists(doc, mongoengine=mongoengine, mongocoll="Tweets"):
     # from setup import mongoengine
     # mongoAppend(doc=somedict, mongoengine = mongoengine, mongocoll="NameOfCollection")
     coll = mongoengine[mongocoll]
-    return coll.update(doc).inserted_id # NB The _id of a document is an instance of ObjectId, rather than a simple string
-
-
+    # NB The _id of a document is an instance of ObjectId, rather than a simple string
+    return coll.update_one(doc, doc, upsert=True).inserted_id
