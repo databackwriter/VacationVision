@@ -30,12 +30,14 @@ mongoAppend(doc=somedict, mongoengine = mongoengine, mongocoll="NameOfCollection
 #endregion mongotestbed
 
 #region twittertestbed
-from TwitterFunctionality import twitterGetTimeline, twitterPrintTweetJSON
+from TwitterFunctionality import twitterGetTimeline, twitterAddTweetJSONtoMongo
 from setup import twitterapi
 i = 0
 tweets = twitterGetTimeline(twitterapi, "thedatabloke")
 for tweet in tweets:
-   twitterPrintTweetJSON(tweet)
+#    twitterPrintTweetJSON(tweet)
+   docid = twitterAddTweetJSONtoMongo(tweet)
+   print(docid)
    i += 1
    if i>3:
        break

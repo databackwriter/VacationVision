@@ -149,6 +149,7 @@ dependencies:
   - python-dateutil=2.7.3=py36_0
   - python.app=2=py36_8
   - pytz=2018.5=py36_0
+  - pywget=3.2=py36_0
   - pyyaml=3.13=py36h1de35cc_0
   - pyzmq=17.1.2=py36h1de35cc_0
   - qt=5.9.6=h45cd832_2
@@ -346,6 +347,7 @@ dependencies:
   - urllib3=1.23=py36_0
   - wcwidth=0.1.7=py36h8c6ec74_0
   - webencodings=0.5.1=py36_1
+  - wget=1.19.5=hf30b1f0_0
   - wheel=0.31.1=py36_0
   - wrapt=1.10.11=py36h1de35cc_2
   - xz=5.2.4=h1de35cc_4

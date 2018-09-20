@@ -3,8 +3,11 @@
 """
 Created on Thu Sep 20 08:11:12 2018
 A collection of functions for interacting with Twitter
+Depends on MongoFunctionality
 @author: petermoore
 """
+
+from MongoFunctionality import mongoAppend
 
 # get a user's timeline from https://miguelmalvarez.com/2015/03/03/download-the-pictures-from-a-twitter-feed-using-python/
 def twitterGetTimeline(api,
@@ -40,3 +43,6 @@ def twitterGetTimeline(api,
 def twitterPrintTweetJSON(tweet):
     import json
     print(json.dumps(tweet._json))
+
+def twitterAddTweetJSONtoMongo(tweet):
+    return mongoAppend(tweet._json)
