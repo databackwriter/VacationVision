@@ -1,2 +1,8 @@
 import nltk
-nltk.download()
+# nltk.download()
+
+from nltk.book import *
+
+
+
+
