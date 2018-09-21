@@ -25,4 +25,4 @@ def mongoAppendIfNotExists(doc, mongoengine=mongoengine, mongocoll="Tweets"):
     # mongoAppend(doc=somedict, mongoengine = mongoengine, mongocoll="NameOfCollection")
     coll = mongoengine[mongocoll]
     # NB The _id of a document is an instance of ObjectId, rather than a simple string
-    return coll.update_one(doc, doc, upsert=True).inserted_id
+    return coll.update_one(doc, doc, {upsert:True}).upserted_id
