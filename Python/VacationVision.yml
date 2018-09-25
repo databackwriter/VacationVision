@@ -44,6 +44,7 @@ dependencies:
   - constantly=15.1.0=py36h28b3542_0
   - cryptography=2.3.1=py36hdbc3d79_0
   - curl=7.61.0=ha441bb4_0
+  - cycler=0.10.0=py36hfc81398_0
   - cyrus-sasl=2.1.26=h26aff7b_3
   - cython=0.28.5=py36h0a44026_0
   - dbus=1.13.2=h760590f_1
@@ -83,6 +84,7 @@ dependencies:
   - jupyter_client=5.2.3=py36_0
   - jupyter_core=4.4.0=py36_0
   - keyring=13.2.1=py36_0
+  - kiwisolver=1.0.1=py36h0a44026_0
   - krb5=1.16.1=h24a3359_6
   - lazy-object-proxy=1.3.1=py36h1de35cc_2
   - ld64=274.2=h7c2db76_0
@@ -105,6 +107,7 @@ dependencies:
   - llvm-openmp=4.0.1=hda82c8b_0
   - make=4.2.1=h3efe00b_1
   - markupsafe=1.0=py36h1de35cc_1
+  - matplotlib=2.2.3=py36h54f8f79_0
   - mccabe=0.6.1=py36_1
   - mistune=0.8.3=py36h1de35cc_1
   - mkl=2019.0=118
