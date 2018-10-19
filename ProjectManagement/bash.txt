@@ -1,52 +1,8 @@
-Last login: Fri Oct 19 12:19:29 on ttys001
-[master f908c4e] 20181019122437
- 1 file changed, 48 insertions(+)
- create mode 100644 ProjectManagement/bash.txt
-Counting objects: 4, done.
-Delta compression using up to 4 threads.
-Compressing objects: 100% (4/4), done.
-Writing objects: 100% (4/4), 1.15 KiB | 1.15 MiB/s, done.
-Total 4 (delta 1), reused 0 (delta 0)
-remote: Resolving deltas: 100% (1/1), completed with 1 local object.
-To https://github.com/databackwriter/VacationVision.git
-   0ac59c2..f908c4e  master -> master
-Branch 'master' set up to track remote branch 'master' from 'origin'.
-latest edits pushed to GitHub
-docker sql database bak file recovered locally
-Backing up boards:
-    - None - Books Kanbanana (56f934a47322f52a94bc4fe3)
-    - 591a55716902f0abd2f32773 - VacationVision (5b55a052efb1c6f37320b03e)
-    - None - Youth United (5bab3cd76135762e3d39fe7d)
-    - 591a55716902f0abd2f32773 - lookatyourdata.ai (579fad9a3397ab2e42232dac)
-project trello board backed up locally
-VacationVision project environment exported
-LAYDMACMINI001:Python petermoore$ cd
-LAYDMACMINI001:~ petermoore$ sudo nano .bash_profile
-Password:
-Sorry, try again.
-Password:
-
-  GNU nano 2.0.6             File: .bash_profile                                
-
-    if [ -f "/Users/petermoore/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/petermoore/anaconda3/etc/profile.d/conda.sh"
-        CONDA_CHANGEPS1=false conda activate base
-    else
-        \export PATH="/Users/petermoore/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda init <<<
-
 cd
 # backup project management
-python ./Documents/GitHub/VacationVision/ProjectManagement/Trello/trello-backup$
+python ./Documents/GitHub/VacationVision/ProjectManagement/Trello/trello-backup.py
 echo "project trello board backed up locally"
 
 cd ./Documents/GitHub/VacationVision/Python
 conda env export > VacationVision.yml
 echo "VacationVision project environment exported"
-
-
-^G Get Help  ^O WriteOut  ^R Read File ^Y Prev Page ^K Cut Text  ^C Cur Pos
-^X Exit      ^J Justify   ^W Where Is  ^V Next Page ^U UnCut Text^T To Spell
