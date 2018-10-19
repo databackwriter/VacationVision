@@ -1,8 +1,15 @@
-cd
-# backup project management
-python ./Documents/GitHub/VacationVision/ProjectManagement/Trello/trello-backup.py
-echo "project trello board backed up locally"
-
-cd ./Documents/GitHub/VacationVision/Python
-conda env export > VacationVision.yml
-echo "VacationVision project environment exported"
+# >>> conda init >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$(CONDA_REPORT_ERRORS=false '/Users/petermoore/anaconda3/bin/conda' shell.bash hook 2> /dev$
+if [ $? -eq 0 ]; then
+    \eval "$__conda_setup"
+else
+    if [ -f "/Users/petermoore/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/petermoore/anaconda3/etc/profile.d/conda.sh"
+        CONDA_CHANGEPS1=false conda activate base
+    else
+        \export PATH="/Users/petermoore/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda init <<<
