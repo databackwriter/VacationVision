@@ -1,0 +1,48 @@
+Last login: Fri Oct 19 12:18:37 on ttys001
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+Everything up-to-date
+latest edits pushed to GitHub
+docker sql database bak file recovered locally
+Backing up boards:
+    - None - Books Kanbanana (56f934a47322f52a94bc4fe3)
+    - 591a55716902f0abd2f32773 - VacationVision (5b55a052efb1c6f37320b03e)
+    - None - Youth United (5bab3cd76135762e3d39fe7d)
+    - 591a55716902f0abd2f32773 - lookatyourdata.ai (579fad9a3397ab2e42232dac)
+project trello board backed up locally
+VacationVision project environment exported
+LAYDMACMINI001:Python petermoore$ cd ..
+LAYDMACMINI001:VacationVision petermoore$ cd ..
+LAYDMACMINI001:GitHub petermoore$ cd
+LAYDMACMINI001:~ petermoore$ sudo nano .bash_profile
+Password:
+
+
+
+  GNU nano 2.0.6             File: .bash_profile                                
+
+
+# added by Anaconda3 5.2.0 installer removed PM 20180827
+# export PATH="/Users/peterfmoore/anaconda3/bin:$PATH"
+
+# added by PM 20180926
+# export PATH="/Library/Frameworks/GDAL.framework/Programs:$PATH"
+
+# added by Anaconda3 5.2.0 installer
+# removed PM 20180827
+# export PATH="/Users/petermoore/anaconda3/bin:$PATH"
+
+# added PM 20180827 and expanded PM 20180919
+# activate conda environment
+#. /Users/petermoore/anaconda3/etc/profile.d/conda.sh
+#conda activate VacationVision
+
+
+cd
+
+                               [ Read 72 lines ]
+^G Get Help  ^O WriteOut  ^R Read File ^Y Prev Page ^K Cut Text  ^C Cur Pos
+^X Exit      ^J Justify   ^W Where Is  ^V Next Page ^U UnCut Text^T To Spell
