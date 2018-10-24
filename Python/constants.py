@@ -8,16 +8,6 @@ Created on Thu Aug 30 05:44:45 2018
 file to include constants and functions that typically are called once and only once (for example those that read from yaml)
 """
 # constants
-
-PATH_FILE = setPathFile()
-
-# session set up
-import os
-os.chdir(PATH_FILE)
-import sys
-sys.path.append(PATH_FILE) #add local directory to path
-
-# constants
 PATH_CONNYAML = "connections.yaml"
 def getDSNfromYAML(yamlfile):
     import yaml
