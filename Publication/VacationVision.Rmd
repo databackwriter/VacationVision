@@ -41,7 +41,7 @@ library(png)
 library(grid)
 
 # and immediately deploy reticulate to utilise conda
-use_condaenv(condaenv="PyR", required =TRUE)
+use_condaenv(condaenv="VacationVision", required =TRUE)
 
 ```
 
@@ -56,12 +56,14 @@ from constants import DSN, ALCHEMYDSN, pdsn, puser, ppassword
 
 ```
 
-```{r r-setup-part-2, include=FALSE} 
+```{r r-setup-part-2,include=FALSE} 
 
 # use the DBI and odbc packages to connet to sql from R
 #(NB the exact connections.yaml file is not included, for obvious password-related reasons, but I've provided a mock-up in the ODBC folder which you could adapt)
 library(DBI) # for SQL database calls
 library(odbc) # for R database calls
+
+
 
 # get connection variables 
 con <- DBI::dbConnect(odbc::odbc(),
@@ -85,18 +87,20 @@ options(htmltools.dir.version = FALSE)
 
 ```
 
-## MSc Data Science Project - Pete Moore 
+## MSc Data Science Project - Pete Moore - course: AC53011 - studentid: 170000983
 ## Vacation Vision: A recommendation engine for the travel industry using twitter-based sentiment analysis; image detection and collaborative filtering
 
 
 
 
+\pagebreak
 
 ### Appendix X
 
 Matrix of skills used and whether or not I had prior^["Prior" meaning before 1st January 2017] experience.
 
 ```{r tables-appendix-skillsmatrix, eval =TRUE, echo=FALSE}
-xlSkillsMatrix<-readxl("SkillMatrix.xlsx", sheet = "Skills")
+library(readxl)
+xlSkillsMatrix<-read_excel("SkillMatrix.xlsx", sheet = "Skills")
 knitr::kable(xlSkillsMatrix, caption = 'Skills Matrix')
 ```
