@@ -16,12 +16,14 @@ def imageDownloadFromURL(media_file, filename):
 
 #deprecated, because extracts placenames as text
 def fromtextExtractNameObjects(text):
-    import nltk
-    # adapted from https://tim.mcnamara.nz/post/2650550090/extracting-names-with-6-lines-of-python-code
-    for sent in nltk.sent_tokenize(text):
-        for chunk in nltk.ne_chunk(nltk.pos_tag(nltk.word_tokenize(sent))):
-            if hasattr(chunk, 'label'):
-                print(chunk.label(), ' '.join(c[0] for c in chunk.leaves()))
+#    import nltk
+#    # adapted from https://tim.mcnamara.nz/post/2650550090/extracting-names-with-6-lines-of-python-code
+#    for sent in nltk.sent_tokenize(text):
+#        for chunk in nltk.ne_chunk(nltk.pos_tag(nltk.word_tokenize(sent))):
+#            if hasattr(chunk, 'label'):
+#                print(chunk.label(), ' '.join(c[0] for c in chunk.leaves()))
+
+    return text
 
 
 

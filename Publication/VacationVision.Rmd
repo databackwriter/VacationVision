@@ -54,7 +54,7 @@ os.chdir(PATH_FILE)
 import sys
 sys.path.append(PATH_FILE) #add local directory to path
 
-from constants import DSN, ALCHEMYDSN, pdsn, puser, ppassword
+from setup import pyodbcdsn, sqlalchemydsn, rawdsn, sqluser, sqlpassword, sqlport, sqldb
 
 ```
 
@@ -69,9 +69,9 @@ library(odbc) # for R database calls
 
 # get connection variables 
 con <- DBI::dbConnect(odbc::odbc(),
-                      DSN = py$pdsn,
-                      uid = py$puser,
-                      pwd = py$ppassword)
+                      DSN = py$rawdsn,
+                      uid = py$sqluser,
+                      pwd = py$sqlpassword)
 
 # collate these in knitr with all the other chunk options
 knitr::opts_chunk$set(tidy = FALSE, 
@@ -197,7 +197,7 @@ Peter Moore
 
 ### Appendix 2: Travel Agency Twitter Feeds
 
-```{r tables-appendix-skillsmatrix, eval =TRUE, echo=FALSE}
+```{r tables-appendix-travel-agency-twitter-feeds, eval =TRUE, echo=FALSE}
 library(readxl)
 xlSkillsMatrix<-read_excel("VacationVision.xlsx", sheet = "TravelAgents")
 knitr::kable(xlSkillsMatrix, caption = 'Skills Matrix')

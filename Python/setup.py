@@ -28,7 +28,7 @@ def getDSNfromYAML(yamlfile, yamlindex):
         pdb = doc[yamlindex]["database"]
     dsn = "DSN="+pdsn+";UID="+puser+";PWD="+ppassword
     alchemydsn = "mssql+pyodbc://"+puser+":"+ppassword+"@"+pdsn
-    mongopath = "mongodb://%s:%s@127.0.0.1:5174" % (puser, ppassword)
+    mongopath = "mongodb://%s:%s@127.0.0.1:6173" % (puser, ppassword)
     return dsn, alchemydsn, pdsn, puser, ppassword, pport, pdb, mongopath
 
 
@@ -36,12 +36,13 @@ def getDSNfromYAML(yamlfile, yamlindex):
 
 # connection strings
 pyodbcdsn, sqlalchemydsn, rawdsn, sqluser, sqlpassword, sqlport, sqldb, _ = getDSNfromYAML(
-    PATH_CONNYAML, 0)
+    PATH_CONNYAML, "sqlconn")
 
 # sqlalchemy engine: use sqlalchemy to talk to sql server via the Base, engine and session objects created here
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
+
 Base = declarative_base()
 engine = create_engine(sqlalchemydsn)
 Base.metadata.bind = engine
@@ -52,7 +53,7 @@ session = DBSession()
 
 # region MONGO
 _, _, _, mongouser, mongopassword, mongoport, mongodb, mongopath = getDSNfromYAML(
-    PATH_CONNYAML, 1)
+    PATH_CONNYAML, "mongoconn")
 # mongo engine: code partially inspired by https://marcobonzanini.com/2015/09/07/getting-started-with-mongodb-and-python/
 from pymongo import MongoClient
 client = MongoClient(mongopath)
