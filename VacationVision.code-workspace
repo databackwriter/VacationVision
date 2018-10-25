@@ -11,9 +11,9 @@
 	"settings": {
 		"mongoRunner": {
 			"connection": {
-				"url": "mongodb://localhost:6173",
+				"url": "mongodb://127.0.0.1:6173",
 				"activeOnStartUp": true,
-				"user": "mongosa",
+				"user": "mongotrevor",
 		}
 	}
 }
