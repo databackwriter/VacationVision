@@ -1,10 +1,12 @@
 ---
-title: "MSc Data Science - University of Dundee"
+title: "Vacation Vision: A holiday recommendation engine"
 author: "Peter Moore"
 date: "`r Sys.Date()`"
 output:
-  pdf_document: default
-  word_document: default
+  word_document:
+    highlight: pygment
+    fig_caption: true
+    reference_docx: VacationVisionTemplate.docx
 course: AC53011
 studentid: '170000983'
 bibliography: skeleton.bib
@@ -87,13 +89,127 @@ options(htmltools.dir.version = FALSE)
 
 ```
 
-## MSc Data Science Project - Pete Moore - course: AC53011 - studentid: 170000983
+
+![University of Dundee](images/DundeeLogo.png)\ 
+
+University of Dundee
+
+Course: AC53011
+
+Studentid: 170000983
+
+Supervisor: Dr Karen Petrie
+
+A thesis submitted in fulfillment of the requirements for the degree of MSc Data Science (School of Computing)
+
+***
+**Vacation Vision: A recommendation engine for the travel industry using twitter-based sentiment analysis; image detection and collaborative filtering**
+*** 
+
+
+
+
+
+
+## Executive Summary
+
+This project...
+
+
+
+
+## Declaration
+
+“I declare that the special study described in this dissertation has been carried out and the dissertation composed by me, and that the dissertation has not been accepted in fulfilment of the requirements of any other degree or professional qualification.”
+
+![Peter Moore](images/PMSig.jpg)
+***
+
+Peter Moore
+
+
+
+## Certificate
+
+
+I certify that Peter Moore has satisfied the conditions of the Ordinance and Regulations and is qualified to submit this dissertation in application for the degree of Master of Science.
+
+
+
+***
+
+Dr Karen Petrie
+
+
+
+## Acknowledgements
+
+I would like to thank my supervisor, Dr Karen Petrie for their guidance throughout the project.
+
+I would also like to thank Professor Mark Whitehorn, Professor Annalu Waller and Mr Andy Cobley fortheir extra-curricular support.
+
+I would like to thank my family for their support. Especially those my partner and daughter who had to live with me whilst writing this. 
+
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+
 ## Vacation Vision: A recommendation engine for the travel industry using twitter-based sentiment analysis; image detection and collaborative filtering
 
+## Introduction
+
+The aim of this project is to recommend exotic holiday destinations for people. “Exotic” in this case meaning places they may never have thought of going but that would suit them. These would be recommended via an analysis of their own holiday snaps per their Twitter feed and a comparison with their peers.
+
+## Approach
+
+## Workflow
+
+## Background
+
+### Twitter 
+
+Twitter is a ...
+
+As per @finin2010annotating
+
+Totally worth invoking Crisp-DM at this point.
+
+### Contraints
 
 
+* Twitter's move to 280 characters in late 2017^[https://blog.twitter.com/official/en_us/topics/product/2017/Giving-you-more-characters-to-express-yourself.html] leads to a lack of establised literature on the new longer tweet length and the vast majority of thepreviouswork discussed here pre-dates this. It would be interesting to review Twitter with a view to the linguistic effect of this change (for example has it led to less abbreviations). Since this project is not concerned directly with tweet lenght and expands abbreviations, this is not considered deleterious to the research.
 
-\pagebreak
+* The @cheng2010you dataset is US-based potentially introducing bias to the control corpus
+
+## Conclusion
+
+## Reflection
+
+***
+
+Peter Moore
+
+`r Sys.Date()`
+
+## Appendices
+
+### Appendix 2: Travel Agency Twitter Feeds
+
+```{r tables-appendix-skillsmatrix, eval =TRUE, echo=FALSE}
+library(readxl)
+xlSkillsMatrix<-read_excel("VacationVision.xlsx", sheet = "TravelAgents")
+knitr::kable(xlSkillsMatrix, caption = 'Skills Matrix')
+```
+
+### Appendix 3: Twitter Pseudonimisation Algorithm
+
+```{python pyPseudonymisation, echo = FALSE, eval=TRUE, comment=""}
+from GenericFunctionality import fromtextExtractNameObjects, getFunctionText
+import inspect
+print(getFunctionText(fromtextExtractNameObjects))
+```
 
 ### Appendix X
 
@@ -101,6 +217,9 @@ Matrix of skills used and whether or not I had prior^["Prior" meaning before 1st
 
 ```{r tables-appendix-skillsmatrix, eval =TRUE, echo=FALSE}
 library(readxl)
-xlSkillsMatrix<-read_excel("SkillMatrix.xlsx", sheet = "Skills")
+xlSkillsMatrix<-read_excel("VacationVision.xlsx", sheet = "Skills")
 knitr::kable(xlSkillsMatrix, caption = 'Skills Matrix')
 ```
+
+
+## References
