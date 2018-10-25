@@ -7,5 +7,13 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	
+	"settings": {
+		"mongoRunner": {
+			"connection": {
+				"url": "mongodb://localhost:6173",
+				"activeOnStartUp": true,
+				"user": "mongosa",
+		}
+	}
 }
