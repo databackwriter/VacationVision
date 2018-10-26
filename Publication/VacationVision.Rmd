@@ -47,6 +47,7 @@ use_condaenv(condaenv="VacationVision", required =TRUE)
 
 ```
 
+
 ```{python py-setup, include=FALSE}
 PATH_FILE="/Users/petermoore/Documents/GitHub/VacationVision/Python"
 import os
@@ -89,6 +90,11 @@ options(htmltools.dir.version = FALSE)
 
 ```
 
+***
+
+```{sql test, echo=TRUE, eval=TRUE}
+SELECT @@SERVERNAME
+```
 
 ![University of Dundee](images/DundeeLogo.png)\ 
 
@@ -179,7 +185,8 @@ Totally worth invoking Crisp-DM at this point.
 ### Contraints
 
 
-* Twitter's move to 280 characters in late 2017^[https://blog.twitter.com/official/en_us/topics/product/2017/Giving-you-more-characters-to-express-yourself.html] leads to a lack of establised literature on the new longer tweet length and the vast majority of thepreviouswork discussed here pre-dates this. It would be interesting to review Twitter with a view to the linguistic effect of this change (for example has it led to less abbreviations). Since this project is not concerned directly with tweet lenght and expands abbreviations, this is not considered deleterious to the research.
+* Twitter's move to 280 characters in late 2017^[https://blog.twitter.com/official/en_us/topics/product/2017/Giving-you-more-characters-to-express-yourself.html] leads t
+o a lack of establised literature on the new longer tweet length and the vast majority of thepreviouswork discussed here pre-dates this. It would be interesting to review Twitter with a view to the linguistic effect of this change (for example has it led to less abbreviations). Since this project is not concerned directly with tweet lenght and expands abbreviations, this is not considered deleterious to the research.
 
 * The @cheng2010you dataset is US-based potentially introducing bias to the control corpus
 

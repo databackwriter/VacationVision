@@ -36,7 +36,7 @@ def getDSNfromYAML(yamlfile, yamlindex):
 
 # connection strings
 pyodbcdsn, sqlalchemydsn, rawdsn, sqluser, sqlpassword, sqlport, sqldb, _ = getDSNfromYAML(
-    PATH_CONNYAML, "sqlconn")
+    PATH_CONNYAML, "sqlconnwin")
 
 # sqlalchemy engine: use sqlalchemy to talk to sql server via the Base, engine and session objects created here
 from sqlalchemy import create_engine

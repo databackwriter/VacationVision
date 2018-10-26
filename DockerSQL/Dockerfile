@@ -9,7 +9,7 @@ WORKDIR /SQLServer
 ADD . /SQLServer
  
 # set environment variables
-ENV SA_PASSWORD=E1st1nct10n # not the actual password :-)
+ENV SA_PASSWORD=********** # not the actual password :-)
  
 ENV ACCEPT_EULA=Y
 
