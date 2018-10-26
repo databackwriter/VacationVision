@@ -21,4 +21,4 @@ docker inspect 3e5899090211 | grep '"IPAddress"' | head -n 1
 
 db.createUser({user:"mongotrevor",pwd:"d1ngbat",roles:[{role:"root",db:"admin"}]})
 
-mongo -u "mongotrevor" -p "d1ngbat" 172.17.0.2 --authenticationDatabase "admin"
+q

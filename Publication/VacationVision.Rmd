@@ -183,9 +183,20 @@ Totally worth invoking Crisp-DM at this point.
 
 * The @cheng2010you dataset is US-based potentially introducing bias to the control corpus
 
+* Furthermore, the analyses are English-language analyses although the methodology should be scalable to other languages
+
+## Ethics statement
+
+All tweets collected were available publicly and collected using the (public) twitter API.  Twitter’s international terms of service were observed (https://twitter.com/en/tos#intlTerms).
+
 ## Conclusion
 
 ## Reflection
+
+This represents merely the beginning of what can be achieved by mining twitter data in the travel sector. Ancillary to this project, but fascinating overall, is the processing of real-time tweets. For example @odlum2015can use real-time twitter information to monitor the spread of the Ebola disease virus. Methodologies such as this could be adapted for data subjects as their vacations approach, for safety (for example political unrest), for packing the suitcase (for example forthcoming extreme weather events) or for fun (for example local sports teams reaching finals). 
+
+This study is not longitudinal, it does not examine the impact of longer-period trends. For example, the relative decline in attraction of the USA and rise in attraction of Oceania over the last fifty years @ballantyne2009trends.
+
 
 ***
 

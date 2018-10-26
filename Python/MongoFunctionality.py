@@ -7,9 +7,8 @@ A collection of functions for querying the mongo database
 """
 from setup import mongoengine
 
+
 # code to append a json file "doc" to the mongo db as defined by mongoengine, to the collection as defined by mongocoll
-
-
 def mongoAppend(doc, mongoengine=mongoengine, mongocoll="Tweets"):
     # example usage:
     # from setup import mongoengine
@@ -25,4 +24,4 @@ def mongoAppendIfNotExists(doc, mongoengine=mongoengine, mongocoll="Tweets"):
     # mongoAppend(doc=somedict, mongoengine = mongoengine, mongocoll="NameOfCollection")
     coll = mongoengine[mongocoll]
     # NB The _id of a document is an instance of ObjectId, rather than a simple string
-    return coll.update_one(doc, doc, {upsert:True}).upserted_id
+    return coll.update_one(doc, doc, {"upsert":True}).upserted_id

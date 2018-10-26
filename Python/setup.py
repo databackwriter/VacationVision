@@ -58,6 +58,9 @@ _, _, _, mongouser, mongopassword, mongoport, mongodb, mongopath = getDSNfromYAM
 from pymongo import MongoClient
 client = MongoClient(mongopath)
 mongoengine = client[mongodb]
+listing = mongoengine.command('usersInfo')
+for document in listing['users']:
+    print(document['user'] +" "+ document['roles'][0]['role'])
 # endregion MONGO
 
 # endregion DATABASE
