@@ -25,10 +25,11 @@ def getDSNfromYAML(yamlfile, yamlindex):
         puser = doc[yamlindex]["user"]
         ppassword = doc[yamlindex]["password"]
         pport = doc[yamlindex]["port"]
+        phost = doc[yamlindex]["host"]
         pdb = doc[yamlindex]["database"]
     dsn = "DSN="+pdsn+";UID="+puser+";PWD="+ppassword
     alchemydsn = "mssql+pyodbc://"+puser+":"+ppassword+"@"+pdsn
-    mongopath = "mongodb://%s:%s@127.0.0.1:6173" % (puser, ppassword)
+    mongopath = "mongodb://%s:%s@%s:%s" % (puser, ppassword, phost, pport)
     return dsn, alchemydsn, pdsn, puser, ppassword, pport, pdb, mongopath
 
 
@@ -53,7 +54,7 @@ session = DBSession()
 
 # region MONGO
 _, _, _, mongouser, mongopassword, mongoport, mongodb, mongopath = getDSNfromYAML(
-    PATH_CONNYAML, "mongoconn")
+    PATH_CONNYAML, "mongoconnwin")
 # mongo engine: code partially inspired by https://marcobonzanini.com/2015/09/07/getting-started-with-mongodb-and-python/
 from pymongo import MongoClient
 client = MongoClient(mongopath)

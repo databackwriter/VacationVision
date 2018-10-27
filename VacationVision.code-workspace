@@ -8,12 +8,5 @@
 		}
 	],
 	
-	"settings": {
-		"mongoRunner": {
-			"connection": {
-				"url": "mongodb://127.0.0.1:6173",
-				"activeOnStartUp": true,
-				"user": "mongotrevor",
-		}
-	}
+	"settings": {}
 }
