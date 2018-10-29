@@ -54,7 +54,7 @@ session = DBSession()
 
 # region MONGO
 _, _, _, mongouser, mongopassword, mongoport, mongodb, mongopath = getDSNfromYAML(
-    PATH_CONNYAML, "mongoconnwin")
+    PATH_CONNYAML, "mongoconn")
 # mongo engine: code partially inspired by https://marcobonzanini.com/2015/09/07/getting-started-with-mongodb-and-python/
 from pymongo import MongoClient
 client = MongoClient(mongopath)

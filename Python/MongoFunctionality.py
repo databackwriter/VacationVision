@@ -15,7 +15,7 @@ def mongoAppend(doc, mongoengine=mongoengine, mongocoll="Tweets"):
     # mongoAppend(doc=somedict, mongoengine = mongoengine, mongocoll="NameOfCollection")
     coll = mongoengine[mongocoll]
     # NB The _id of a document is an instance of ObjectId, rather than a simple string
-    return coll.insert_one(doc).inserted_id
+    return coll.insert_one(doc, bypass_document_validation=False).inserted_id
 
 
 def mongoAppendIfNotExists(doc, mongoengine=mongoengine, mongocoll="Tweets"):
