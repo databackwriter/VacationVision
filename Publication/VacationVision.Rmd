@@ -152,7 +152,7 @@ Dr Karen Petrie
 
 I would like to thank my supervisor, Dr Karen Petrie for their guidance throughout the project.
 
-I would also like to thank Professor Mark Whitehorn, Professor Annalu Waller and Mr Andy Cobley fortheir extra-curricular support.
+I would also like to thank Professor Mark Whitehorn, Professor Annalu Waller and Mr Andy Cobley fortheir extra-curricular support. Bob Ward...
 
 I would like to thank my family for their support. Especially those my partner and daughter who had to live with me whilst writing this. 
 
@@ -204,6 +204,9 @@ This represents merely the beginning of what can be achieved by mining twitter d
 
 This study is not longitudinal, it does not examine the impact of longer-period trends. For example, the relative decline in attraction of the USA and rise in attraction of Oceania over the last fifty years @ballantyne2009trends.
 
+The study does not cover the ability to tailor vacations. For example, to hen/stag weekends; to LGBQT+^[inferring this would be illegal per the GDPR and therefore this would have to be disclosed explicitly] friendly locations. Indeed, the initial dataset of Audley Travel Tweets represent a non-niche travel agency. 
+
+Language. Babies. Weddings. Instagram. 
 
 ***
 

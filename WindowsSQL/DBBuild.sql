@@ -23,11 +23,11 @@ GO
 /*  LOCATION: MongoDB table/view in '<database_name>.<schema_name>.<object_name>' format
 *  DATA_SOURCE: the external data source, created above.
 */
-CREATE EXTERNAL TABLE customers(
-[O_ORDERKEY] DECIMAL(38) NOT NULL
+CREATE EXTERNAL TABLE Tweets(
+Tweets NVARCHAR(MAX) NOT NULL
 )
 WITH (
-LOCATION='VacationVision.dbo.Tweets',
+LOCATION='Tweets',
 DATA_SOURCE= mongovv
 );
 GO
