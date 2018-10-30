@@ -166,20 +166,20 @@ The aim of this project is to recommend exotic holiday destinations for people. 
 
 The project has the goal to recommend better holidays and hopefully to inspire them to visit places they may not otherwise have thought of.  The approach to this is to data mine the social media site Twitter. Twitter is a site where informal messages are sent from one user (as identified by their "twitter handle") to a subset of users who "follow" one on the platform. This set of tweets is called that individual user's "timeline". People often tweet about their vacations and this is often acompanied by an identifying phrase or hashtag. A single short message is called a Tweet.
 
-The first part of this project examines a subset of Tweets in order to:
+The first part of this project is *Feature Selection*; this examines a subset of Tweets in order to:
 
 * study the vocabulary of users known to be on vacation;
 * compare these to a control corpus of (non-vacation) tweets
 * establish a feature set for vacation tweets by both text and image
 * build a feature set for vacation destinations (both text and photographic)
 
-The second part, assesses a larger corpus of tweets and, using the features selected in part one as a bck bone, analyses the tweets in order to:
+The second part this project is the build of a *Destination Dictionary*; this assesses a larger corpus of tweets and, using the features selected in part one as a back bone, analyses the tweets in order to:
 
-* train a neural network to detect a vacztion destination from Twitter language
+* train a neural network to detect a vacation destination from Twitter language
 * validate and test this against known vacation tweets
 * build a dictionary of destinations to features (for example: {Lion:"Kruger National Park"})
 
-The third part assesses the timeline of the user in order to:
+The third part of the project is called the *Idiosyncrasy Index*; this  assesses the timeline of an indivdual user in order to:
 
 * assess that user's vacation destinations
 * match these to the dictionary created in part two 
@@ -213,7 +213,8 @@ Another major change over the lifetime of Twitter is the introduction of emojiem
 
 @Kralj2015emojis took the set of emojis and measured their valency to rank the sentiments of the various emoji (http://kt.ijs.si/data/Emoji_sentiment_ranking/index.html)
 
-![Emoji Sentiment Map shows sentimental valency of emoji (@Kralj2015emojis) http://kt.ijs.si/data/Emoji_sentiment_ranking/emojimap.html](images/EmojiSentimentMap.png
+
+![Emoji Sentiment Map shows sentimental valency of emoji (@Kralj2015emojis) (http://kt.ijs.si/data/Emoji_sentiment_ranking/emojimap.html)](images/EmojiSentimentMap.png)
 
 One problem with these sort of approaches is that the emoji acts as a noisy label rather than a ground truth^[for example the author frequently signs off with the nerd face emoji, not because he is smiling, but because it looks like him 🤓].  This is addressed by @liu2012emoticon who use emoji data to smooth manually labelled data. Although this project elects to use the @Kralj2015emojis method, it is acknowledged that this potential improvement is available were it not for time constraints.  The @liu2012emoticon will suffice on the assumption that emojis are not typically used sarcastically.  This may be moot as @gonzalez2011identifying show that, even at a textual level, detecting sarcasm in tweets is almost impossible, even for a human. The study effectively states that all sarcasm can be seen as a private joke. As such, sarcasm is ignored in this study which represents a minimum viable product for a travel recommendation engine.
 
@@ -245,19 +246,31 @@ o a lack of establised literature on the new longer tweet length and the vast ma
 
 ### Data understanding: Feature selection
 
-Data collection ... data description ... data exploration ... data quality
+Data collection
+Data description
+Data exploration
+Data quality
 
 ### Data preparation: Feature selection
 
-Data selection... Data cleaning ... Data construction ... Data integration ... Data format
+Data selection
+Data cleaning
+Data construction
+Data integration
+Data format
 
 ### Data modelling: Feature selection
 
-Modelling techniques ... Test design ... Build ..Assessment
+Modelling techniques
+Test design
+Build
+Assessment
 
 ### Evaluation: Feature selection
 
-Evaluate ... review ... determine next steps.
+Evaluate
+Review
+Determine next steps
 
 #### Results: Feature selection
 
