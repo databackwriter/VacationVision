@@ -128,5 +128,105 @@ for label_type in ["neg", "pos"]:
                 labels.append(1)
 
 
+from keras.preprocessing.text import Tokenizer
+from keras.preprocessing.sequence import pad_sequences
+import numpy as np
+
+maxlen = 100 # cut off review after 100 words
+training_samples = 200 # train on 200 samples
+validation_samples = 10000 # validate on 10000 samples
+max_words = 10000 # consider only 10000 words in the data set
+
+tokenizer = Tokenizer(num_words=max_words)
+tokenizer.fit_on_texts(texts)
+
+sequences = tokenizer.texts_to_sequences(texts)
+
+word_index = tokenizer.word_index
+
+data = pad_sequences(sequences, maxlen=maxlen) #shape is 25000 x 100
+
+labels = np.asarray(labels) # shape is 25000,
+
+indices= np.arange(data.shape[0]) #Chollet: splits data into training set and calidation set
+np.random.shuffle(indices) # but first shuffles it because you are starting with data in which samples are ordered
+data = data[indices]
+labels = labels[indices]
+
+x_train = data[:training_samples]
+y_train = labels[:training_samples]
+x_val = data[training_samples:training_samples + validation_samples]
+y_val = labels[training_samples:training_samples + validation_samples]
+
+# this bit takes teh file from glove and builds an index that maps words to their vector representation
+glove_dir = "/Users/petermoore/Downloads/glove.6B"
+embeddings_index = {}
+f = open(os.path.join(glove_dir, "glove.6B.100d.txt"))
+for line in f:
+    values = line.split()
+    word = values[0]
+    coefs = np.asarray(values[1:], dtype = "float32")
+    embeddings_index[word] = coefs
+f.close()
+
+# now buyld an embedding matrix
+embedding_dim = 100 # going to build a matrix of max_words x 100; an entry at position "i" is a 100-d vector of that word
+embedding_matrix = np.zeros((max_words, embedding_dim))
+for word, i in word_index.items():
+    if i < max_words:
+        embedding_vector = embeddings_index.get(word)
+        if embedding_vector is not None:
+            embedding_matrix[i] = embedding_vector
 
 
+# now use the embedding layer in a similar way to the above (but there is an extra layer and we don't compile)
+from keras.models import Sequential
+from keras.layers import Embedding, Flatten, Dense
+
+model = Sequential()
+model.add(Embedding(max_words, embedding_dim, input_length=maxlen)) # 100-dimensional embeddings
+model.add(Flatten()) # flatten 3D tensor into 2d of shape samples, maxlen * 100
+model.add(Dense(32, activation="relu")) # add the classifier on top
+model.add(Dense(1, activation="sigmoid")) # add the classifier on top
+model.summary()
+
+# load pre-trained word embedings from GloVe into embedding layer
+model.layers[0].set_weights([embedding_matrix])
+model.layers[0].trainable = False # FFS don't retrain the pretrain with your randomly initialised layer
+
+# compile and train
+model.compile(optimizer="rmsprop", loss="binary_crossentropy", metrics=["acc"])
+model.summary()
+
+history = model.fit(x_train,
+                    y_train,
+                    epochs=10,
+                    batch_size=32,
+                    validation_data=(x_val, y_val))
+
+model.save_weights("pre_trained_glove_model.h5")
+
+
+
+import matplotlib.pyplot as plt
+acc = history.history["acc"]
+val_acc = history.history["val_acc"]
+loss = history.history["loss"]
+val_loss = history.history["val_loss"]
+
+epochs = range(1, len(acc) + 1)
+
+plt.plot(epochs, acc, "bo", label="Training acc")
+plt.plot(epochs, val_acc, "b", label="Validation acc")
+plt.title("Training and validation accuracy")
+plt.legend()
+
+plt.figure()
+
+
+plt.plot(epochs, loss, "bo", label="Training loss")
+plt.plot(epochs, val_loss, "b", label="Validation loss")
+plt.title("Training and validation loss")
+plt.legend()
+
+plt.show()
