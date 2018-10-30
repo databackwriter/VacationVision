@@ -179,13 +179,13 @@ The second part this project is the build of a *Destination Dictionary*; this as
 * validate and test this against known vacation tweets
 * build a dictionary of destinations to features (for example: {Lion:"Kruger National Park"})
 
-The third part of the project is called the *Idiosyncrasy Index*; this  assesses the timeline of an indivdual user in order to:
+The third part of the project is the *Recommendation Engine*; this  assesses the timeline of an individual user in order to:
 
 * assess that user's vacation destinations
 * match these to the dictionary created in part two 
 * recommend a new (previously unseen!) destination.
 
-A stretch goal of part three is to define a hapiness index and, instead of recommending a vacation based on previous trips, recommend a destiation based on what makes the user happy.
+A stretch goal of part three is to define an *Idiosyncrasy Index* and, instead of recommending a vacation based on previous trips, recommend a destination based on what makes the user happy.
 
 The project will be delivered via a web interface whereby a user enters their Twitter handle and is recommended a (set of) vacation destinations.
 
