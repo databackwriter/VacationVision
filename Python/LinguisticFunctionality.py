@@ -47,9 +47,6 @@ for i, sample in enumerate(samples):
         index = token_indexchar.get(character)
         resultschar[i,j,index] = 1
 
-## using keras
-from keras.preprocessing.text import Tokeniser # NB this is a big deal because it strips special characters and allows selection of only most common words
 
-tokenizer = Tokeniser(num_words=1000)
 
 
