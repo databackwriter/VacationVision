@@ -1,11 +1,1 @@
-// db.Tweets.findOne()
-var map=function(){
-    var words = this.text.match(/\w+g);
-    if (words == null){
-        return;
-    }
-
-    for (var i = 0; i < words.length; i++){
-        emit(words[i]), {count:1});
-    }
-};
+db.Tweets.find() //.forEach( function(myDoc) { print( "user: " + myDoc.name ); } );

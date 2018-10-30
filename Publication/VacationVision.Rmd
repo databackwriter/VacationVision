@@ -112,11 +112,6 @@ A thesis submitted in fulfillment of the requirements for the degree of MSc Data
 **Vacation Vision: A recommendation engine for the travel industry using twitter-based sentiment analysis; image detection and collaborative filtering**
 *** 
 
-
-
-
-
-
 ## Executive Summary
 
 This project...
@@ -162,41 +157,216 @@ I would like to thank my family for their support. Especially those my partner a
 \listoftables
 
 
-## Vacation Vision: A recommendation engine for the travel industry using twitter-based sentiment analysis; image detection and collaborative filtering
-
+## Vacation Vision: A recommendation engine for your next trip
 ## Introduction
 
 The aim of this project is to recommend exotic holiday destinations for people. “Exotic” in this case meaning places they may never have thought of going but that would suit them. These would be recommended via an analysis of their own holiday snaps per their Twitter feed and a comparison with their peers.
 
 ## Approach
 
-## Workflow
+The project has the goal to recommend better holidays and hopefully to inspire them to visit places they may not otherwise have thought of.  The approach to this is to data mine the social media site Twitter. Twitter is a site where informal messages are sent from one user (as identified by their "twitter handle") to a subset of users who "follow" one on the platform. This set of tweets is called that individual user's "timeline". People often tweet about their vacations and this is often acompanied by an identifying phrase or hashtag. A single short message is called a Tweet.
 
-## Background
+The first part of this project examines a subset of Tweets in order to:
 
-### Twitter 
+* study the vocabulary of users known to be on vacation;
+* compare these to a control corpus of (non-vacation) tweets
+* establish a feature set for vacation tweets by both text and image
+* build a feature set for vacation destinations (both text and photographic)
 
-Twitter is a ...
+The second part, assesses a larger corpus of tweets and, using the features selected in part one as a bck bone, analyses the tweets in order to:
 
-As per @finin2010annotating
+* train a neural network to detect a vacztion destination from Twitter language
+* validate and test this against known vacation tweets
+* build a dictionary of destinations to features (for example: {Lion:"Kruger National Park"})
 
-Totally worth invoking Crisp-DM at this point.
+The third part assesses the timeline of the user in order to:
 
-### Contraints
+* assess that user's vacation destinations
+* match these to the dictionary created in part two 
+* recommend a new (previously unseen!) destination.
+
+A stretch goal of part three is to define a hapiness index and, instead of recommending a vacation based on previous trips, recommend a destiation based on what makes the user happy.
+
+The project will be delivered via a web interface whereby a user enters their Twitter handle and is recommended a (set of) vacation destinations.
+
+A note on the style: the style is inspired by that set out in CRISP-DM (@chapman2000crisp).
 
 
-* Twitter's move to 280 characters in late 2017^[https://blog.twitter.com/official/en_us/topics/product/2017/Giving-you-more-characters-to-express-yourself.html] leads t
-o a lack of establised literature on the new longer tweet length and the vast majority of thepreviouswork discussed here pre-dates this. It would be interesting to review Twitter with a view to the linguistic effect of this change (for example has it led to less abbreviations). Since this project is not concerned directly with tweet lenght and expands abbreviations, this is not considered deleterious to the research.
+
+***
+
+## Part One: Feature selection 
+
+***
+
+### Background understanding: Feature selection 
+
+## Literature Review
+
+With over 17-million UK-based users projected for 2018^[https://www.statista.com/statistics/271350/twitter-users-in-the-united-kingdom-uk/], twitter provides a unique portal into the behaviour of the populace. The ease of tweeting, the brevity of a tweet and the instant feedback allow users to publish a life diary in real time.  The tweets themselves are analysable but within the constraints of the platform they are published and the dialect in which they are composed. Tweets constitute an informal use of language (@java2007we) that is riven with slang and misspellings (@liu2012emoticon) and idiosyncratic structures such as the hashtag, a #-prefixed word denoting a specific topic of information (see for example @chang2010new).   
+
+Tweets have recently doubled in length to 280 characters ^[https://blog.Feature selection.com/official/en_us/topics/product/2017/Giving-you-more-characters-to-express-yourself.html] from a previous length of 140 characters; in what little research has been done on the impact of this change @gligoric2018constraints show that this has led to less abbreviations, less contracted auxiliary verbs and less terse use of language (perhaps ironically they note that shorter tweets are more successful).  This study does not discriminate based on tweet length because the phenomena of the short message format are not obliterated with the change in tweet length and still need to be accounted for. For example, stemming, stopwords and normalisation of repeated letters (e.g. "I looooove it") are still accounted for.
+
+Another major change over the lifetime of Twitter is the introduction of emojiemoji^[unicode graphic symbols which are indicators of sentiment such as 😀 = happy and ☹️ = sad but also ambiguous images such as 😏]  where previously these were designated by emoticons^[handwritten symbols denoting sentiment such as :-) = happy and :-( = sad] as noisy labels to classify an image as happy/sad/neutral; in doing so they show that support vector machines may be used to categorise the valency (happiness/sadness) of a tweet].  The sentiment of tweets is a crucial indicator in analysing anything from something as specific as a presidential elections @wang2012system to something as general as happiness itself @dodds2010measuring. Here the sentiment of tweets is vital in identifying what the user actually *likes* prior to recommending a vacation.  In earlier studies, @go2009twitter and @pak2010twitter use emoticons to predict happiness with 80% accuracy.  However the popularisation of emoji since 2010 allows for a more nuanced non binary classification of tweets.  
+
+![Google Trends for Emoji, notice the increase post 2010 https://trends.google.com/trends/explore?date=all&q=Emoji ](images/GoogleTrendEmoji.png)
+
+@Kralj2015emojis took the set of emojis and measured their valency to rank the sentiments of the various emoji (http://kt.ijs.si/data/Emoji_sentiment_ranking/index.html)
+
+![Emoji Sentiment Map shows sentimental valency of emoji (@Kralj2015emojis) http://kt.ijs.si/data/Emoji_sentiment_ranking/emojimap.html](images/EmojiSentimentMap.png
+
+One problem with these sort of approaches is that the emoji acts as a noisy label rather than a ground truth^[for example the author frequently signs off with the nerd face emoji, not because he is smiling, but because it looks like him 🤓].  This is addressed by @liu2012emoticon who use emoji data to smooth manually labelled data. Although this project elects to use the @Kralj2015emojis method, it is acknowledged that this potential improvement is available were it not for time constraints.  The @liu2012emoticon will suffice on the assumption that emojis are not typically used sarcastically.  This may be moot as @gonzalez2011identifying show that, even at a textual level, detecting sarcasm in tweets is almost impossible, even for a human. The study effectively states that all sarcasm can be seen as a private joke. As such, sarcasm is ignored in this study which represents a minimum viable product for a travel recommendation engine.
+
+
+
+
+#### Objectives 
+
+... 
+
+#### assessment of situation 
+
+... 
+
+
+#### determination of goals 
+
+... project plan
+
+#### Constraints 
+
+
+* Feature selection's move to 280 characters in late 2017^[https://blog.Feature selection.com/official/en_us/topics/product/2017/Giving-you-more-characters-to-express-yourself.html] leads t
+o a lack of establised literature on the new longer tweet length and the vast majority of thepreviouswork discussed here pre-dates this. It would be interesting to review Feature selection with a view to the linguistic effect of this change (for example has it led to less abbreviations). Since this project is not concerned directly with tweet lenght and expands abbreviations, this is not considered deleterious to the research.
 
 * The @cheng2010you dataset is US-based potentially introducing bias to the control corpus
 
 * Furthermore, the analyses are English-language analyses although the methodology should be scalable to other languages
 
+### Data understanding: Feature selection
+
+Data collection ... data description ... data exploration ... data quality
+
+### Data preparation: Feature selection
+
+Data selection... Data cleaning ... Data construction ... Data integration ... Data format
+
+### Data modelling: Feature selection
+
+Modelling techniques ... Test design ... Build ..Assessment
+
+### Evaluation: Feature selection
+
+Evaluate ... review ... determine next steps.
+
+#### Results: Feature selection
+
+Visualisations
+
+#### Conclusion: Feature selection
+
+It was found that...
+
+### Deployment: Feature selection
+
+Plan deployment ... plan monitoring ... report ..review
+
+
+***
+
+## Part Two: Happiness indexing
+
+***
+
+### Background understanding: Happiness indexing 
+
+Objectives ... assessment of situation ... determination of goals ... project plan
+
+### Data understanding: Happiness indexing
+
+Data collection ... data description ... data exploration ... data quality
+
+### Data preparation: Happiness indexing
+
+Data selection... Data cleaning ... Data construction ... Data integration ... Data format
+
+### Data modelling: Happiness indexing
+
+Modelling techniques ... Test design ... Build ..Assessment
+
+### Evaluation: Happiness indexing
+
+Evaluate ... review ... determine next steps.
+
+#### Results: Happiness indexing
+
+Visualisations
+
+#### Conclusion: Happiness indexing
+
+It was found that...
+
+### Deployment: Happiness indexing
+
+Plan deployment ... plan monitoring ... report ..review
+
+
+***
+
+## Part Four: Feature selection with Recommendation engine
+
+***
+
+### Background understanding: Recommendation engine 
+
+Objectives ... assessment of situation ... determination of goals ... project plan
+
+### Data understanding: Recommendation engine
+
+Data collection ... data description ... data exploration ... data quality
+
+### Data preparation: Recommendation engine
+
+Data selection... Data cleaning ... Data construction ... Data integration ... Data format
+
+### Data modelling: Recommendation engine
+
+Modelling techniques ... Test design ... Build ..Assessment
+
+### Evaluation: Recommendation engine
+
+Evaluate ... review ... determine next steps.
+
+#### Results: Recommendation engine
+
+Visualisations
+
+#### Conclusion: Recommendation engine
+
+It was found that...
+
+### Deployment: Recommendation engine
+
+Plan deployment ... plan monitoring ... report ..review
+
+
+
+
+
+## Results: overall
+
+...
+
+## Summary of dependencies
+
+...
+
+## Conclusion: overall
+
 ## Ethics statement
 
 All tweets collected were available publicly and collected using the (public) twitter API.  Twitter’s international terms of service were observed (https://twitter.com/en/tos#intlTerms).
 
-## Conclusion
 
 ## Reflection
 
