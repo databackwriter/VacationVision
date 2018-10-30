@@ -268,7 +268,18 @@ dependencies:
   - zope=1.0=py37_1
   - zope.interface=4.5.0=py37h1de35cc_0
   - pip:
+    - absl-py==0.6.1
+    - astor==0.7.1
+    - gast==0.2.0
+    - grpcio==1.16.0
+    - keras-applications==1.0.6
+    - keras-preprocessing==1.0.5
+    - markdown==3.0.1
     - msgpack==0.5.6
+    - protobuf==3.6.1
     - tables==3.4.4
+    - tensorboard==1.11.0
+    - tensorflow==1.11.0
+    - termcolor==1.1.0
 prefix: /anaconda3
 
